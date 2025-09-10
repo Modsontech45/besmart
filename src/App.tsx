@@ -54,7 +54,6 @@ function App() {
                       <Layout />
                     </ProtectedRoute>
                   }>
-                    <Route path="dashboard" element={<Navigate to="/dashboard" replace />} />
                     <Route path="dashboard" element={<Dashboard />} />
                     <Route path="devices" element={<Devices />} />
                     <Route path="automations" element={<Automations />} />
