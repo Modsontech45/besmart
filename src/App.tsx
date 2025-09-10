@@ -8,6 +8,7 @@ import i18n from './i18n/config';
 import Layout from './components/Layout/Layout';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 import LoadingSpinner from './components/UI/LoadingSpinner';
+import LandingPage from './pages/Landing/LandingPage';
 
 // Auth pages
 import LoginPage from './pages/Auth/LoginPage';
@@ -36,6 +37,9 @@ function App() {
             <div className="min-h-screen bg-gray-50 dark:bg-black">
               <Suspense fallback={<LoadingSpinner />}>
                 <Routes>
+                  {/* Landing page */}
+                  <Route path="/landing" element={<LandingPage />} />
+                  
                   {/* Public routes */}
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/signup" element={<SignupPage />} />
@@ -62,7 +66,8 @@ function App() {
                   </Route>
                   
                   {/* Catch all */}
-                  <Route path="*" element={<Navigate to="/dashboard" replace />} />
+                  <Route path="/" element={<Navigate to="/landing" replace />} />
+                  <Route path="*" element={<Navigate to="/landing" replace />} />
                 </Routes>
               </Suspense>
               <Toaster position="top-right" />
