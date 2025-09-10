@@ -5,7 +5,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Primary colors using CSS variables
+        // African-inspired color palette
+        'savanna-green': '#6B8E23',
+        'sunset-orange': '#FF7043',
+        'earth-brown': '#8B4513',
+        'desert-sand': '#F4A460',
+        'clay-terracotta': '#D2691E',
+        'deep-sky-blue': '#1E90FF',
+        'charcoal-black': '#2E2E2E',
+        'ivory': '#FFFFF0',
+        'baobab-green': '#3A5F0B',
+        'flame-red': '#DC143C',
+        
+        // Primary colors using CSS variables (Sunset Orange theme)
         primary: {
           50: 'rgb(var(--color-primary-50) / <alpha-value>)',
           100: 'rgb(var(--color-primary-100) / <alpha-value>)',
@@ -18,44 +30,49 @@ export default {
           800: 'rgb(var(--color-primary-800) / <alpha-value>)',
           900: 'rgb(var(--color-primary-900) / <alpha-value>)',
         },
-        // Static color palettes for reference
-        blue: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          200: '#bfdbfe',
-          300: '#93c5fd',
-          400: '#60a5fa',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-          800: '#1e40af',
-          900: '#1e3a8a',
+        
+        // Semantic color mappings
+        success: '#3A5F0B', // Baobab Green
+        warning: '#FF7043', // Sunset Orange
+        error: '#DC143C',   // Flame Red
+        info: '#1E90FF',    // Deep Sky Blue
+      },
+      
+      backgroundImage: {
+        'gradient-african-sunset': 'linear-gradient(135deg, #FF7043, #D2691E)',
+        'gradient-african-earth': 'linear-gradient(135deg, #8B4513, #F4A460)',
+        'gradient-african-nature': 'linear-gradient(135deg, #6B8E23, #3A5F0B)',
+        'gradient-african-sky': 'linear-gradient(135deg, #1E90FF, #F4A460)',
+        'gradient-african-warm': 'linear-gradient(135deg, #FF7043, #F4A460)',
+      },
+      
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Poppins', 'system-ui', 'sans-serif'],
+      },
+      
+      boxShadow: {
+        'african': '0 4px 14px 0 rgba(255, 112, 67, 0.15)',
+        'african-lg': '0 10px 25px -3px rgba(255, 112, 67, 0.2), 0 4px 6px -2px rgba(255, 112, 67, 0.1)',
+        'earth': '0 4px 14px 0 rgba(139, 69, 19, 0.15)',
+        'nature': '0 4px 14px 0 rgba(107, 142, 35, 0.15)',
+      },
+      
+      animation: {
+        'african-pulse': 'african-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'gentle-bounce': 'gentle-bounce 3s ease-in-out infinite',
+      },
+      
+      keyframes: {
+        'african-pulse': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.7' },
         },
-        teal: {
-          50: '#f0fdfa',
-          100: '#ccfbf1',
-          200: '#99f6e4',
-          300: '#5eead4',
-          400: '#2dd4bf',
-          500: '#14b8a6',
-          600: '#0d9488',
-          700: '#0f766e',
-          800: '#115e59',
-          900: '#134e4a',
+        'gentle-bounce': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-5px)' },
         },
-        purple: {
-          50: '#faf5ff',
-          100: '#f3e8ff',
-          200: '#e9d5ff',
-          300: '#d8b4fe',
-          400: '#c084fc',
-          500: '#a855f7',
-          600: '#9333ea',
-          700: '#7c3aed',
-          800: '#6b21a8',
-          900: '#581c87',
-        }
-      }
+      },
     },
   },
   plugins: [],

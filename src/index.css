@@ -2,77 +2,210 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base theme variables (Blue - Default) */
+/* African-inspired color palette for SmartHome app */
 :root {
-  --color-primary-50: 239 246 255;
-  --color-primary-100: 219 234 254;
-  --color-primary-200: 191 219 254;
-  --color-primary-300: 147 197 253;
-  --color-primary-400: 96 165 250;
-  --color-primary-500: 59 130 246;
-  --color-primary-600: 37 99 235;
-  --color-primary-700: 29 78 216;
-  --color-primary-800: 30 64 175;
-  --color-primary-900: 30 58 138;
+  /* Primary Colors (Brand Identity / Main UI Elements) */
+  --color-savanna-green: #6B8E23;
+  --color-sunset-orange: #FF7043;
+  
+  /* Secondary Colors (Buttons, Highlights, Icons) */
+  --color-earth-brown: #8B4513;
+  --color-desert-sand: #F4A460;
+  
+  /* Background / Surfaces */
+  --color-clay-terracotta: #D2691E;
+  --color-deep-sky-blue: #1E90FF;
+  
+  /* Text Colors */
+  --color-charcoal-black: #2E2E2E;
+  --color-ivory: #FFFFF0;
+  
+  /* Accent / Alert Colors */
+  --color-baobab-green: #3A5F0B;
+  --color-flame-red: #DC143C;
+
+  /* Primary color system using Sunset Orange as base */
+  --color-primary-50: 255 244 240;
+  --color-primary-100: 255 229 220;
+  --color-primary-200: 255 204 188;
+  --color-primary-300: 255 179 156;
+  --color-primary-400: 255 112 67;
+  --color-primary-500: 255 112 67;
+  --color-primary-600: 230 89 54;
+  --color-primary-700: 204 67 41;
+  --color-primary-800: 179 45 28;
+  --color-primary-900: 153 22 15;
 }
 
-/* Teal theme variables */
-.theme-teal {
-  --color-primary-50: 240 253 250;
-  --color-primary-100: 204 251 241;
-  --color-primary-200: 153 246 228;
-  --color-primary-300: 94 234 212;
-  --color-primary-400: 45 212 191;
-  --color-primary-500: 20 184 166;
-  --color-primary-600: 13 148 136;
-  --color-primary-700: 15 118 110;
-  --color-primary-800: 17 94 89;
-  --color-primary-900: 19 78 74;
+/* Dark mode adjustments */
+.dark {
+  --color-primary-50: 153 22 15;
+  --color-primary-100: 179 45 28;
+  --color-primary-200: 204 67 41;
+  --color-primary-300: 230 89 54;
+  --color-primary-400: 255 112 67;
+  --color-primary-500: 255 112 67;
+  --color-primary-600: 255 112 67;
+  --color-primary-700: 255 179 156;
+  --color-primary-800: 255 204 188;
+  --color-primary-900: 255 229 220;
 }
 
-/* Purple theme variables */
-.theme-purple {
-  --color-primary-50: 250 245 255;
-  --color-primary-100: 243 232 255;
-  --color-primary-200: 233 213 255;
-  --color-primary-300: 216 180 254;
-  --color-primary-400: 192 132 252;
-  --color-primary-500: 168 85 247;
-  --color-primary-600: 147 51 234;
-  --color-primary-700: 124 58 237;
-  --color-primary-800: 107 33 168;
-  --color-primary-900: 88 28 135;
+/* Custom utility classes for African color palette */
+.bg-savanna-green { background-color: var(--color-savanna-green); }
+.bg-sunset-orange { background-color: var(--color-sunset-orange); }
+.bg-earth-brown { background-color: var(--color-earth-brown); }
+.bg-desert-sand { background-color: var(--color-desert-sand); }
+.bg-clay-terracotta { background-color: var(--color-clay-terracotta); }
+.bg-deep-sky-blue { background-color: var(--color-deep-sky-blue); }
+.bg-charcoal-black { background-color: var(--color-charcoal-black); }
+.bg-ivory { background-color: var(--color-ivory); }
+.bg-baobab-green { background-color: var(--color-baobab-green); }
+.bg-flame-red { background-color: var(--color-flame-red); }
+
+.text-savanna-green { color: var(--color-savanna-green); }
+.text-sunset-orange { color: var(--color-sunset-orange); }
+.text-earth-brown { color: var(--color-earth-brown); }
+.text-desert-sand { color: var(--color-desert-sand); }
+.text-clay-terracotta { color: var(--color-clay-terracotta); }
+.text-deep-sky-blue { color: var(--color-deep-sky-blue); }
+.text-charcoal-black { color: var(--color-charcoal-black); }
+.text-ivory { color: var(--color-ivory); }
+.text-baobab-green { color: var(--color-baobab-green); }
+.text-flame-red { color: var(--color-flame-red); }
+
+.border-savanna-green { border-color: var(--color-savanna-green); }
+.border-sunset-orange { border-color: var(--color-sunset-orange); }
+.border-earth-brown { border-color: var(--color-earth-brown); }
+.border-desert-sand { border-color: var(--color-desert-sand); }
+.border-clay-terracotta { border-color: var(--color-clay-terracotta); }
+.border-deep-sky-blue { border-color: var(--color-deep-sky-blue); }
+.border-baobab-green { border-color: var(--color-baobab-green); }
+.border-flame-red { border-color: var(--color-flame-red); }
+
+/* Gradient utilities */
+.bg-gradient-african-sunset {
+  background: linear-gradient(135deg, var(--color-sunset-orange), var(--color-clay-terracotta));
 }
 
-/* Custom utility classes using CSS variables */
-.bg-primary-50 { background-color: rgb(var(--color-primary-50)); }
-.bg-primary-100 { background-color: rgb(var(--color-primary-100)); }
-.bg-primary-500 { background-color: rgb(var(--color-primary-500)); }
-.bg-primary-600 { background-color: rgb(var(--color-primary-600)); }
-.bg-primary-700 { background-color: rgb(var(--color-primary-700)); }
-.bg-primary-900 { background-color: rgb(var(--color-primary-900)); }
+.bg-gradient-african-earth {
+  background: linear-gradient(135deg, var(--color-earth-brown), var(--color-desert-sand));
+}
 
-.text-primary-300 { color: rgb(var(--color-primary-300)); }
-.text-primary-400 { color: rgb(var(--color-primary-400)); }
-.text-primary-500 { color: rgb(var(--color-primary-500)); }
-.text-primary-600 { color: rgb(var(--color-primary-600)); }
+.bg-gradient-african-nature {
+  background: linear-gradient(135deg, var(--color-savanna-green), var(--color-baobab-green));
+}
 
-.border-primary-500 { border-color: rgb(var(--color-primary-500)); }
-.border-primary-600 { border-color: rgb(var(--color-primary-600)); }
+.bg-gradient-african-sky {
+  background: linear-gradient(135deg, var(--color-deep-sky-blue), var(--color-desert-sand));
+}
 
-.ring-primary-500 { --tw-ring-color: rgb(var(--color-primary-500)); }
+/* Status indicator utilities */
+.status-online {
+  background-color: var(--color-baobab-green);
+  color: var(--color-ivory);
+}
 
-/* Hover states */
-.hover\:bg-primary-700:hover { background-color: rgb(var(--color-primary-700)); }
-.hover\:text-primary-500:hover { color: rgb(var(--color-primary-500)); }
+.status-offline {
+  background-color: var(--color-flame-red);
+  color: var(--color-ivory);
+}
+
+/* Card and surface styling */
+.card-african {
+  background-color: var(--color-desert-sand);
+  border: 1px solid var(--color-earth-brown);
+  color: var(--color-charcoal-black);
+}
+
+.card-african-dark {
+  background-color: var(--color-charcoal-black);
+  border: 1px solid var(--color-earth-brown);
+  color: var(--color-ivory);
+}
+
+/* Button styling */
+.btn-primary-african {
+  background: linear-gradient(135deg, var(--color-sunset-orange), var(--color-clay-terracotta));
+  color: var(--color-ivory);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary-african:hover {
+  background: linear-gradient(135deg, var(--color-clay-terracotta), var(--color-earth-brown));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 112, 67, 0.3);
+}
+
+.btn-secondary-african {
+  background-color: var(--color-earth-brown);
+  color: var(--color-ivory);
+  border: 2px solid var(--color-earth-brown);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary-african:hover {
+  background-color: transparent;
+  color: var(--color-earth-brown);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-desert-sand);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-earth-brown);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-sunset-orange);
+}
 
 /* Focus states */
-.focus\:ring-primary-500:focus { --tw-ring-color: rgb(var(--color-primary-500)); }
-.focus\:border-primary-500:focus { border-color: rgb(var(--color-primary-500)); }
+.focus-african:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 112, 67, 0.3);
+  border-color: var(--color-sunset-orange);
+}
 
-/* Dark mode variants */
-.dark .bg-primary-900 { background-color: rgb(var(--color-primary-900)); }
-.dark .text-primary-300 { color: rgb(var(--color-primary-300)); }
-.dark .text-primary-400 { color: rgb(var(--color-primary-400)); }
-.dark .border-primary-400 { border-color: rgb(var(--color-primary-400)); }
-.dark .ring-primary-400 { --tw-ring-color: rgb(var(--color-primary-400)); }
+/* Animation for African theme */
+@keyframes african-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-african-pulse {
+  animation: african-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Responsive text colors for better contrast */
+@media (prefers-color-scheme: dark) {
+  .text-adaptive {
+    color: var(--color-ivory);
+  }
+  
+  .bg-adaptive {
+    background-color: var(--color-charcoal-black);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .text-adaptive {
+    color: var(--color-charcoal-black);
+  }
+  
+  .bg-adaptive {
+    background-color: var(--color-desert-sand);
+  }
+}
