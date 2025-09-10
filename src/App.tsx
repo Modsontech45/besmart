@@ -38,6 +38,7 @@ function App() {
               <Suspense fallback={<LoadingSpinner />}>
                 <Routes>
                   {/* Landing page */}
+                  <Route path="/" element={<LandingPage />} />
                   <Route path="/landing" element={<LandingPage />} />
                   
                   {/* Public routes */}
@@ -53,7 +54,7 @@ function App() {
                       <Layout />
                     </ProtectedRoute>
                   }>
-                    <Route index element={<Navigate to="/dashboard" replace />} />
+                    <Route path="dashboard" element={<Navigate to="/dashboard" replace />} />
                     <Route path="dashboard" element={<Dashboard />} />
                     <Route path="devices" element={<Devices />} />
                     <Route path="automations" element={<Automations />} />
@@ -66,7 +67,6 @@ function App() {
                   </Route>
                   
                   {/* Catch all */}
-                  <Route path="/" element={<Navigate to="/landing" replace />} />
                   <Route path="*" element={<Navigate to="/landing" replace />} />
                 </Routes>
               </Suspense>
