@@ -1,16 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Camera,
-  Play,
-  AlertTriangle,
-  RefreshCw,
-  Eye,
-  Wifi,
-  WifiOff,
-  Zap,
-  Record,
-} from "lucide-react";
+import { Camera, Play, AlertTriangle, RefreshCw, Eye, Wifi, WifiOff, Zap, SwordIcon as Record } from "lucide-react";
 import { apiService } from "../../services/apiService";
 import { format } from "date-fns";
 import toast from "react-hot-toast";
