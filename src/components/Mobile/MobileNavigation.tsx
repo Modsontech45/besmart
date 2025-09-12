@@ -50,7 +50,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ currentPage, onPage
               <Home className="h-5 w-5 text-white" />
             </div>
             <div>
-              <h1 className="text-lg font-bold text-gray-900">Smart Home</h1>
+              <h1 className="text-lg font-bold text-gray-900">Aƒe Nyanu</h1>
               <p className="text-xs text-gray-500">
                 {currentPageData?.label || t('navigation.devices')}
               </p>
@@ -128,7 +128,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ currentPage, onPage
                     <Home className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h2 className="text-lg font-bold text-gray-900">Smart Home</h2>
+                    <h2 className="text-lg font-bold text-gray-900">Aƒe Nyanu</h2>
                     <p className="text-sm text-gray-500">{t('navigation.dashboard')}</p>
                   </div>
                 </div>
@@ -164,7 +164,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ currentPage, onPage
               {/* Menu Footer */}
               <div className="p-6 border-t border-gray-200">
                 <div className="text-center text-sm text-gray-500">
-                  <p>Smart Home v2.1.0</p>
+                  <p>Aƒe Nyanu v2.1.0</p>
                   <p>© 2025 Synctuario</p>
                 </div>
               </div>

@@ -72,7 +72,7 @@ const LoginPage: React.FC = () => {
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Synctuario Home</h2>
           <p className="mt-2 text-sm text-gray-600">
-            {t('auth.login')} to your smart home dashboard
+            {t('auth.login')} to Aƒe Nyanu
           </p>
         </div>
 

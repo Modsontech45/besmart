@@ -119,7 +119,7 @@ const MobileDashboard: React.FC = () => {
     <div className="space-y-6 pb-20">
       {/* Welcome Section */}
       <div className="bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-2xl p-6 mx-4 mt-4">
-        <h2 className="text-2xl font-bold mb-2">Welcome Back!</h2>
+        <h2 className="text-2xl font-bold mb-2">Aƒe Nyanu</h2>
         <p className="text-primary-100">
           {onlineDevices.length} of {devices.length} devices are online
         </p>

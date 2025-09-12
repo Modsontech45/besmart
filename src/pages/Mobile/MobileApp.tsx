@@ -168,7 +168,7 @@ const MobileApp: React.FC = () => {
         <div className="bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-2xl p-6 mx-4 mt-4">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h2 className="text-2xl font-bold">Smart Home</h2>
+              <h2 className="text-2xl font-bold">Aƒe Nyanu</h2>
               <p className="text-primary-100">
                 {onlineDevices.length} of {devices.length} devices online
               </p>

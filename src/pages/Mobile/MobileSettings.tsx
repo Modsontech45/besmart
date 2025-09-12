@@ -121,7 +121,7 @@ const MobileSettings: React.FC = () => {
 
       {/* App Info */}
       <div className="text-center text-sm text-gray-500 py-4">
-        <p>Smart Home v2.1.0</p>
+        <p>Aƒe Nyanu v2.1.0</p>
         <p>© 2025 Synctuario</p>
       </div>
     </div>
