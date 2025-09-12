@@ -241,5 +241,24 @@
     "support": "Support",
     "contact": "Contact",
     "version": "Version"
+  },
+  "mobile": {
+    "turnAllOn": "Turn All On",
+    "turnAllOff": "Turn All Off",
+    "listening": "Listening...",
+    "voiceCommand": "Voice Command",
+    "deviceCount": "devices",
+    "onlineDevices": "online",
+    "offlineDevices": "offline",
+    "noDevices": "No Devices Found",
+    "addDevices": "Add devices to get started",
+    "refreshDevices": "Refresh Devices",
+    "deviceUpdated": "Device updated",
+    "allDevicesOn": "All devices turned on",
+    "allDevicesOff": "All devices turned off",
+    "voiceNotSupported": "Voice control not supported",
+    "speakCommand": "Speak your command",
+    "commandNotRecognized": "Command not recognized",
+    "deviceNotFound": "Device not found"
   }
 }

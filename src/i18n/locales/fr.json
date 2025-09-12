@@ -241,5 +241,24 @@
     "support": "Support",
     "contact": "Contact",
     "version": "Version"
+  },
+  "mobile": {
+    "turnAllOn": "Tout allumer",
+    "turnAllOff": "Tout éteindre",
+    "listening": "Écoute...",
+    "voiceCommand": "Commande vocale",
+    "deviceCount": "appareils",
+    "onlineDevices": "en ligne",
+    "offlineDevices": "hors ligne",
+    "noDevices": "Aucun appareil trouvé",
+    "addDevices": "Ajoutez des appareils pour commencer",
+    "refreshDevices": "Actualiser les appareils",
+    "deviceUpdated": "Appareil mis à jour",
+    "allDevicesOn": "Tous les appareils allumés",
+    "allDevicesOff": "Tous les appareils éteints",
+    "voiceNotSupported": "Contrôle vocal non supporté",
+    "speakCommand": "Dites votre commande",
+    "commandNotRecognized": "Commande non reconnue",
+    "deviceNotFound": "Appareil non trouvé"
   }
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Home, 
@@ -9,8 +10,10 @@ import {
   Settings, 
   Menu, 
   X,
-  Smartphone
+  Smartphone,
+  Globe
 } from 'lucide-react';
+import LanguageSwitcher from '../UI/LanguageSwitcher';
 
 interface MobileNavigationProps {
   currentPage: string;
@@ -18,15 +21,16 @@ interface MobileNavigationProps {
 }
 
 const MobileNavigation: React.FC<MobileNavigationProps> = ({ currentPage, onPageChange }) => {
+  const { t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigationItems = [
-    { id: 'devices', label: 'Devices', icon: Smartphone },
-    { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
-    { id: 'automations', label: 'Automations', icon: Zap },
-    { id: 'vision-ai', label: 'Vision AI', icon: Camera },
-    { id: 'business', label: 'Business', icon: Building },
-    { id: 'settings', label: 'Settings', icon: Settings },
+    { id: 'devices', label: t('navigation.devices'), icon: Smartphone },
+    { id: 'dashboard', label: t('navigation.dashboard'), icon: LayoutDashboard },
+    { id: 'automations', label: t('navigation.automations'), icon: Zap },
+    { id: 'vision-ai', label: t('navigation.visionAI'), icon: Camera },
+    { id: 'business', label: t('navigation.business'), icon: Building },
+    { id: 'settings', label: t('navigation.settings'), icon: Settings },
   ];
 
   const handlePageChange = (pageId: string) => {
@@ -48,17 +52,20 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ currentPage, onPage
             <div>
               <h1 className="text-lg font-bold text-gray-900">Smart Home</h1>
               <p className="text-xs text-gray-500">
-                {currentPageData?.label || 'Devices'}
+                {currentPageData?.label || t('navigation.devices')}
               </p>
             </div>
           </div>
           
-          <button
-            onClick={() => setIsMenuOpen(true)}
-            className="p-2 rounded-lg text-gray-600 hover:bg-gray-100"
-          >
-            <Menu className="h-6 w-6" />
-          </button>
+          <div className="flex items-center space-x-2">
+            <LanguageSwitcher />
+            <button
+              onClick={() => setIsMenuOpen(true)}
+              className="p-2 rounded-lg text-gray-600 hover:bg-gray-100"
+            >
+              <Menu className="h-6 w-6" />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -122,7 +129,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ currentPage, onPage
                   </div>
                   <div>
                     <h2 className="text-lg font-bold text-gray-900">Smart Home</h2>
-                    <p className="text-sm text-gray-500">Navigation Menu</p>
+                    <p className="text-sm text-gray-500">{t('navigation.dashboard')}</p>
                   </div>
                 </div>
                 <button

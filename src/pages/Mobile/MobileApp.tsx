@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { apiService } from '../../services/apiService';
 import { useVoiceControl } from '../../hooks/useVoiceControl';
@@ -11,7 +12,8 @@ import MobileBusiness from './MobileBusiness';
 import MobileSettings from './MobileSettings';
 import toast from 'react-hot-toast';
 import { differenceInSeconds } from 'date-fns';
-import { Mic, MicOff, Power, RefreshCw } from 'lucide-react';
+import { Mic, MicOff, Power, RefreshCw, Globe } from 'lucide-react';
+import LanguageSwitcher from '../../components/UI/LanguageSwitcher';
 
 interface Device {
   id: string;
@@ -24,6 +26,7 @@ interface Device {
 }
 
 const MobileApp: React.FC = () => {
+  const { t } = useTranslation();
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState('devices');
@@ -71,7 +74,7 @@ const MobileApp: React.FC = () => {
       
       toast.success(`${device.device_name} ${newState ? 'turned on' : 'turned off'}`);
     } catch (error) {
-      toast.error('Failed to update device');
+      toast.error(t('mobile.deviceUpdated'));
     }
   };
 
@@ -94,7 +97,7 @@ const MobileApp: React.FC = () => {
         return updated || device;
       }));
 
-      toast.success('All devices turned on');
+      toast.success(t('mobile.allDevicesOn'));
     } catch (error) {
       toast.error('Failed to turn on all devices');
     }
@@ -119,7 +122,7 @@ const MobileApp: React.FC = () => {
         return updated || device;
       }));
 
-      toast.success('All devices turned off');
+      toast.success(t('mobile.allDevicesOff'));
     } catch (error) {
       toast.error('Failed to turn off all devices');
     }

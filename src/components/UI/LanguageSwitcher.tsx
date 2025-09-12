@@ -23,7 +23,7 @@ const LanguageSwitcher: React.FC = () => {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-1 sm:space-x-2 p-1.5 sm:p-2 text-gray-400 hover:text-white rounded-lg hover:bg-gray-800"
+        className="flex items-center space-x-1 sm:space-x-2 p-1.5 sm:p-2 text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-100"
       >
         <Globe className="h-5 w-5" />
         <span className="text-sm hidden sm:block">{currentLanguage.flag}</span>
@@ -35,13 +35,13 @@ const LanguageSwitcher: React.FC = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute right-0 mt-2 w-40 sm:w-48 bg-gray-800 rounded-lg shadow-lg border border-gray-700 py-1 z-50"
+            className="absolute right-0 mt-2 w-40 sm:w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-50"
           >
             {languages.map((language) => (
               <button
                 key={language.code}
                 onClick={() => handleLanguageChange(language.code)}
-                className="w-full flex items-center justify-between px-3 sm:px-4 py-2 text-sm text-white hover:bg-gray-700"
+                className="w-full flex items-center justify-between px-3 sm:px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
               >
                 <div className="flex items-center space-x-3">
                   <span>{language.flag}</span>
