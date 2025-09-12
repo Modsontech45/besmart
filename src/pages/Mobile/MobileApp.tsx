@@ -168,9 +168,9 @@ const MobileApp: React.FC = () => {
         <div className="bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-2xl p-6 mx-4 mt-4">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h2 className="text-2xl font-bold">Aƒe Nyanu</h2>
+              <h2 className="text-2xl font-bold">{t('app.name')}</h2>
               <p className="text-primary-100">
-                {onlineDevices.length} of {devices.length} devices online
+                {onlineDevices.length} {t('common.of')} {devices.length} {t('mobile.deviceCount')} {t('mobile.onlineDevices')}
               </p>
             </div>
 
@@ -202,7 +202,7 @@ const MobileApp: React.FC = () => {
               className="flex-1 bg-green-500 hover:bg-green-600 text-white py-3 px-4 rounded-xl font-medium flex items-center justify-center space-x-2 transition-colors"
             >
               <Power className="h-5 w-5" />
-              <span>Turn All On</span>
+              <span>{t('mobile.turnAllOn')}</span>
             </motion.button>
             
             <motion.button
@@ -211,7 +211,7 @@ const MobileApp: React.FC = () => {
               className="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-3 px-4 rounded-xl font-medium flex items-center justify-center space-x-2 transition-colors"
             >
               <Power className="h-5 w-5" />
-              <span>Turn All Off</span>
+              <span>{t('mobile.turnAllOff')}</span>
             </motion.button>
           </div>
 
@@ -225,10 +225,10 @@ const MobileApp: React.FC = () => {
               <div className="bg-white/20 rounded-lg p-3 text-center">
                 <div className="flex items-center justify-center space-x-2 mb-1">
                   <div className="w-2 h-2 bg-red-400 rounded-full animate-pulse"></div>
-                  <span className="text-sm font-medium">Listening...</span>
+                  <span className="text-sm font-medium">{t('mobile.listening')}</span>
                 </div>
                 <p className="text-xs text-primary-100">
-                  Say "Turn on [device]", "Turn off [device]", "Turn all on", or "Turn all off"
+                  {t('mobile.sayCommands')}
                 </p>
               </div>
             </motion.div>
@@ -240,7 +240,7 @@ const MobileApp: React.FC = () => {
           {/* Refresh Button */}
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-xl font-bold text-gray-900">
-              Your Devices ({devices.length})
+              {t('devices.yourDevices')} ({devices.length})
             </h3>
             <motion.button
               whileTap={{ scale: 0.95 }}
@@ -258,14 +258,14 @@ const MobileApp: React.FC = () => {
                 <div className="text-gray-400 mb-4">
                   <Power className="h-16 w-16 mx-auto" />
                 </div>
-                <h3 className="text-lg font-medium text-gray-900 mb-2">No Devices Found</h3>
-                <p className="text-gray-500 mb-6">Add devices to your smart home to get started</p>
+                <h3 className="text-lg font-medium text-gray-900 mb-2">{t('mobile.noDevices')}</h3>
+                <p className="text-gray-500 mb-6">{t('devices.addDevicesToStart')}</p>
                 <motion.button
                   whileTap={{ scale: 0.95 }}
                   onClick={fetchDevices}
                   className="bg-primary-600 text-white px-6 py-3 rounded-xl font-medium"
                 >
-                  Refresh Devices
+                  {t('mobile.refreshDevices')}
                 </motion.button>
               </div>
             </div>
@@ -289,7 +289,7 @@ const MobileApp: React.FC = () => {
               className="mt-6 bg-blue-50 border border-blue-200 rounded-xl p-4"
             >
               <p className="text-sm text-blue-800">
-                <strong>Voice Command:</strong> "{transcript}"
+                <strong>{t('mobile.voiceCommandReceived')}:</strong> "{transcript}"
               </p>
             </motion.div>
           )}
