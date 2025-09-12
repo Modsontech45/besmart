@@ -1,14 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Lightbulb, 
-  ToggleLeft, 
-  Thermometer, 
-  Sensors, 
-  Smartphone,
-  Wifi,
-  WifiOff
-} from 'lucide-react';
+import { Lightbulb, ToggleLeft, Thermometer, Scissors as Sensors, Smartphone, Wifi, WifiOff } from 'lucide-react';
 import { differenceInSeconds } from 'date-fns';
 
 interface Device {
