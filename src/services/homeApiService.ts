@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:3000/api/devices";
+const API_BASE_URL = "https://besmartbackend.onrender.com/api/devices";
 
 const getToken = (): string => localStorage.getItem("token") || "";
 const getUserId = (): string => localStorage.getItem("userId") || "";

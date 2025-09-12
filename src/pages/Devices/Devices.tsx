@@ -3,6 +3,13 @@ import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import {
+  format,
+  formatDistanceToNow,
+  isToday,
+  isYesterday,
+  differenceInSeconds,
+} from "date-fns";
+import {
   Plus,
   Search,
   Filter,
@@ -17,7 +24,7 @@ import {
   WifiOff,
 } from "lucide-react";
 import { apiService } from "../../services/apiService";
-import { format } from "date-fns";
+// import { format } from "date-fns";
 import toast from "react-hot-toast";
 
 // Device controls components
@@ -35,7 +42,6 @@ interface Device {
   metadata?: Record<string, any>;
   api_key?: string;
   [key: string]: any; // for any additional properties
-  
 }
 
 const Devices: React.FC = () => {
@@ -50,24 +56,39 @@ const Devices: React.FC = () => {
     {}
   );
 
-  useEffect(() => {
-    fetchDevices();
-  }, []);
+useEffect(() => {
+  // Initial fetch
+  fetchDevices();
 
-  const fetchDevices = async () => {
-    try {
-      const data = await apiService.getDevices();
-      const normalized = data.map((d: any) => ({
-        ...d,
-        device_name: d.device_name || d.name || "Unnamed Device",
-      }));
-      setDevices(normalized);
-    } catch {
-      toast.error("Failed to fetch devices");
-    } finally {
-      setLoading(false);
-    }
-  };
+  // Set up interval to refresh every 10 seconds
+  const interval = setInterval(() => {
+    fetchDevices();
+  }, 5000);
+
+  // Clean up interval on unmount
+  return () => clearInterval(interval);
+}, []);
+
+const fetchDevices = async () => {
+  try {
+    const data = await apiService.getDevices();
+    setDevices((prev) =>
+      data.map((d: any) => {
+        const existing = prev.find((p) => p.id === d.id);
+        return {
+          ...existing, // preserve previous state for smooth animation
+          ...d,
+          device_name: d.device_name || d.name || "Unnamed Device",
+        };
+      })
+    );
+  } catch {
+    toast.error("Failed to fetch devices");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   const handleEditDevice = async (
     deviceUid: string,
@@ -174,6 +195,7 @@ const Devices: React.FC = () => {
   };
 
   const filteredDevices = devices.filter((device) => {
+    console.log("Filtering device:", device);
     const matchesSearch = device.device_name
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
@@ -325,39 +347,74 @@ const Devices: React.FC = () => {
                   <p className="text-sm text-gray-400 capitalize">
                     {device.device_type}
                   </p>
-
                   {/* Online Status */}
-                  <div
-                    className={`flex items-center space-x-2 mt-1 px-2 py-1 rounded-full ${
-                      isOnline
-                        ? "bg-green-900 text-green-300"
-                        : "bg-red-900 text-red-300"
-                    }`}
-                  >
-                    {isOnline ? (
-                      <Wifi className="h-3 w-3" />
-                    ) : (
-                      <WifiOff className="h-3 w-3" />
-                    )}
-                    <span className="text-xs font-medium">
-                      {isOnline ? t("devices.online") : t("devices.offline")}
-                    </span>
-                  </div>
+                  {device.last_seen &&
+                    (() => {
+                      const secondsSinceLastSeen = differenceInSeconds(
+                        new Date(),
+                        new Date(device.last_seen)
+                      );
+                      const isOnline = secondsSinceLastSeen <= 60; // online if seen within last 20 seconds
 
+                      return (
+                        <div
+                          className={`items-center space-x-2 mt-1 px-2 py-1 rounded-full inline-flex ${
+                            isOnline
+                              ? "bg-green-900 text-green-300"
+                              : "bg-red-900 text-red-300"
+                          }`}
+                        >
+                          {isOnline ? (
+                            <Wifi className="h-3 w-3" />
+                          ) : (
+                            <WifiOff className="h-3 w-3" />
+                          )}
+                          <span className="text-xs font-medium">
+                            {isOnline
+                              ? t("devices.online")
+                              : t("devices.offline")}
+                          </span>
+                        </div>
+                      );
+                    })()}
                   {/* Last Seen */}
+                  {/* <div className="text-xs text-gray-400 truncate mt-1">
+                    {t("devices.lastSeen")}:{" "}
+                    {device.last_seen
+                      ? format(new Date(device.last_seen), "MMM d, h:mm a")
+                      : "N/A"}
+                  </div> */}
+
                   <div className="text-xs text-gray-400 truncate mt-1">
                     {t("devices.lastSeen")}:{" "}
-                    {device.lastSeen
-                      ? format(new Date(device.lastSeen), "MMM d, h:mm a")
+                    {device.last_seen
+                      ? (() => {
+                          const date = new Date(device.last_seen);
+                          const secondsDiff = differenceInSeconds(
+                            new Date(),
+                            date
+                          );
+
+                          if (secondsDiff < 60) {
+                            return "now";
+                          } else if (isToday(date)) {
+                            return formatDistanceToNow(date, {
+                              addSuffix: true,
+                            });
+                          } else if (isYesterday(date)) {
+                            return `yesterday at ${format(date, "h:mm a")}`;
+                          } else {
+                            return format(date, "MM/dd/yyyy");
+                          }
+                        })()
                       : "N/A"}
                   </div>
-
                   {/* API Key Section */}
                   <div className="hidden sm:flex items-center space-x-2 mt-2">
                     <div className="text-xs text-gray-400 truncate font-mono">
                       {visibleApiKeys[device.id]
-                        ? device.api_key
-                        : `${device.api_key?.slice(0, 10)}...`}
+                        ? device.device_uid
+                        : `${device.device_uid?.slice(0, 10)}...`}
                     </div>
                     <button
                       onClick={() => toggleApiKey(device.id)}
@@ -367,14 +424,13 @@ const Devices: React.FC = () => {
                     </button>
                     <button
                       onClick={() =>
-                        handleCopyApiKey(device.api_key, device.device_name)
+                        handleCopyApiKey(device.device_uid, device.device_name)
                       }
                       className="px-2 py-1 bg-gray-700 hover:bg-gray-600 text-white text-xs rounded-lg"
                     >
                       Copy
                     </button>
                   </div>
-
                   {/* Device-specific controls & state display */}
                   <div className="mt-2 space-y-2">
                     {/* Light */}

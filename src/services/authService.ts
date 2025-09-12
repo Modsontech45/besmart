@@ -1,7 +1,7 @@
 // authService.ts
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:3000/api/auth";
+const API_BASE_URL = "https://besmartbackend.onrender.com/api/auth";
 
 export const authService = {
  async login(email: string, password: string) {

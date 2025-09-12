@@ -1,7 +1,7 @@
 // homeApiService.ts
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:3000/api/devices";
+const API_BASE_URL = "https://besmartbackend.onrender.com/api/devices";
 
 export const homeApiService = {
   async registerDevice(device: { name: string; type: string }) {
