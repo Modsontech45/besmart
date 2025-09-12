@@ -8,7 +8,7 @@ import i18n from './i18n/config';
 import Layout from './components/Layout/Layout';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 import LoadingSpinner from './components/UI/LoadingSpinner';
-import LandingPage from './pages/Landing/LandingPage';
+import MobileApp from './pages/Mobile/MobileApp';
 
 // Auth pages
 import LoginPage from './pages/Auth/LoginPage';
@@ -34,12 +34,15 @@ function App() {
       <ThemeProvider>
         <AuthProvider>
           <Router>
-            <div className="min-h-screen bg-gray-50 dark:bg-black">
+            <div className="min-h-screen bg-gray-100">
               <Suspense fallback={<LoadingSpinner />}>
                 <Routes>
-                  {/* Landing page */}
-                  <Route path="/" element={<LandingPage />} />
-                  <Route path="/landing" element={<LandingPage />} />
+                  {/* Mobile App - Default Route */}
+                  <Route path="/" element={
+                    <ProtectedRoute>
+                      <MobileApp />
+                    </ProtectedRoute>
+                  } />
                   
                   {/* Public routes */}
                   <Route path="/login" element={<LoginPage />} />
@@ -48,8 +51,8 @@ function App() {
                   <Route path="/reset-password" element={<ResetPasswordPage />} />
                   <Route path="/verify-email" element={<VerifyEmailPage />} />
                   
-                  {/* Protected routes */}
-                  <Route path="/" element={
+                  {/* Desktop routes (optional) */}
+                  <Route path="/desktop" element={
                     <ProtectedRoute>
                       <Layout />
                     </ProtectedRoute>
@@ -66,7 +69,7 @@ function App() {
                   </Route>
                   
                   {/* Catch all */}
-                  <Route path="*" element={<Navigate to="/landing" replace />} />
+                  <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
               </Suspense>
               <Toaster position="top-right" />
